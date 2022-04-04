@@ -1,5 +1,12 @@
 <?php
 
+/*
+Author : Yonis Ismail
+Title : To-do list application
+Last modified : 04/04/2022
+Task : Add or link create button
+*/
+
 namespace App\Controller;
 
 use App\Entity\Crud;
@@ -13,6 +20,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManager;
 use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
+
 
 class MainController extends AbstractController
 {
@@ -28,7 +36,7 @@ class MainController extends AbstractController
 
 
 
-    
+    ## Create function where data will be added to the database through user input
     #[Route('/create', name: 'create')]
     public function create(Request $request, ManagerRegistry $doctrine){
         $crud = new Crud();
@@ -49,7 +57,7 @@ class MainController extends AbstractController
         ]);
     }
 
-
+    # Update function where user can modify the data in the database.
     #[Route('/update/{id}', name: 'update')]
     public function update(Request $request, $id, ManagerRegistry $doctrine){
         $crud = $doctrine->getRepository(Crud::class)->find($id);
@@ -70,7 +78,7 @@ class MainController extends AbstractController
         ]);
 
     }
-
+    # Delete function where user can delete data such as a task that they have finished
     #[Route('/delete/{id}', name: 'delete')]
     public function delete($id, ManagerRegistry $doctrine){
         $data = $doctrine->getRepository(Crud::class)->find($id);
@@ -78,6 +86,7 @@ class MainController extends AbstractController
         $em->remove($data);
         $em->flush();
 
+        # Data is deleted succesfully
         $this->addFlash('notice', "Deleted successfully");
 
         return $this->redirecttoRoute('app_main');
