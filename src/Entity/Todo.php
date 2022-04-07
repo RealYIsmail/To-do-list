@@ -2,23 +2,18 @@
 
 namespace App\Entity;
 
+use App\Repository\TodoRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\TodoRepository")
- */
+#[ORM\Entity(repositoryClass: TodoRepository::class)]
 class Todo
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
     public function getId(): ?int
@@ -38,8 +33,7 @@ class Todo
         return $this;
     }
 
-    public function toArray()
-    {
+    public function toArray(){
         return ['id' => $this->id, 'name' => $this->name];
     }
 }
