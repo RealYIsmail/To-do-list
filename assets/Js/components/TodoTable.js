@@ -14,13 +14,14 @@ import DoneIcon from '@material-ui/icons/Done';
 import CloseIcon from '@material-ui/icons/Close';
 import DeleteDialog from './DeleteDialog';
 
+
 function TodoTable() {
     const context = useContext(TodoContext);
     const [addTodo, setAddTodo] = useState('');
     const [editIsShown, setEditIsShown] = useState(false);
     const [editTodo, setEditTodo] = useState('');
     const [DeleteConfirmationIsShown, setDeleteConfirmationIsShown] = useState(false);
-
+    const [todoToBeDeleted, setTodoToBeDeleted] = useState(null);
     return (
         <fragment>
             <form onSubmit={(event) => {
@@ -76,7 +77,7 @@ function TodoTable() {
                                     <IconButton onClick={() => {setEditIsShown(todo.id); setEditTodo(todo.name)}}>
                                         <EditIcon/>
                                         </IconButton>
-                                    <IconButton onClick={() => {setDeleteConfirmationIsShown(true)}}>
+                                    <IconButton onClick={() => {setDeleteConfirmationIsShown(true); setTodoToBeDeleted(todo);}}>
                                         <DeleteIcon/>
                                     </IconButton>
                                 </TableCell>
@@ -85,7 +86,10 @@ function TodoTable() {
                     </TableBody>
                 </Table>
             </form>
-        <DeleteDialog open={DeleteConfirmationIsShown} setDeleteConfirmationIsShown={setDeleteConfirmationIsShown} />
+            {DeleteConfirmationIsShown && (
+                <DeleteDialog todo={todoToBeDeleted} open={DeleteConfirmationIsShown} setDeleteConfirmationIsShown={setDeleteConfirmationIsShown} />
+            )}
+            
         </fragment>
     );
 }
