@@ -3,7 +3,8 @@
 # Description
 This project uses the PHP framework called Symfony along with react to produce a web appliation that can allow a user to keep track of their to-do tasks along with
 the ability to add tasks whenever a user finds a new task to do or delete tasks if the user has completed one. It works by connecting to a database which will save
-tasks that the user has entered, 
+tasks that the user has entered, and present that to the webpage in a table with icons attached from material ui which are used for a variety of things such as
+edit and delete.
 
 
 # How-to-install
