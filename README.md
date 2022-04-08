@@ -8,30 +8,30 @@ tasks that the user has entered,
 
 # How-to-install
 first install scoop to be able to install symfony
-'''
+```
 iwr -useb get.scoop.sh | iex
-'''
-'''
+```
+```
 scoop install symfony-cli
-'''
+```
 Next install composer to be able to install encore click [here](https://getcomposer.org/download/)
-'''
+```
 composer require symfony/webpack-encore-bundle
-'''
+```
 Afterwards please download yarn, react and material ui
-'''
+```
 npm install yarn
-'''
-'''
+```
+```
 yarn add react react-dom prop-types
-'''
-'''
+```
+```
 yarn add @material-ui/core
-'''
-'''
+```
+```
 yarn add @material-ui/icons
-'''
+```
 
 
 # How-to-run
-uncomment ''' /.enableReactPreset() ''' in webpack.config.js run '''yarn encore dev --watch''' and run '''symfony server:start'''
+uncomment ``` /.enableReactPreset() ``` in webpack.config.js run ``` yarn encore dev --watch ``` and run ``` symfony server:start ```
